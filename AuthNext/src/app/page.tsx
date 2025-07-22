@@ -1,11 +1,9 @@
-import Image from "next/image";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-100">
-      <h1 className="text-xl font-bold text-blue-600">
-        ✅ Tailwind is working!
-      </h1>
+    <main className="p-6">
+      <h1 className="text-4xl font-bold">Welcome to My Startup 🚀</h1>
+      <p className="mt-4 text-lg text-gray-700">This is the home page.</p>
     </main>
   );
 }
