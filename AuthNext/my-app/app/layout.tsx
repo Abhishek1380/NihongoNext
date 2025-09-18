@@ -14,7 +14,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {/* 👇 page.tsx content will render here */}
         {children}
       </body>
     </html>

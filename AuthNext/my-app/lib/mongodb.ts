@@ -7,7 +7,7 @@ export async function connectDB() {
 
   try {
     await mongoose.connect(process.env.MongoDB_URI as string, {
-      dbName: "Clinic_Website",
+      dbName: "AuthNext",
     });
     isConnected = true;
     console.log("✅ MongoDB connected");
