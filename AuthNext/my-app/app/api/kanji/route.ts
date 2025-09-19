@@ -8,6 +8,7 @@ export async function GET() {
         await connectDB();
 
         const kanjiData = await Kanji.find();
+
         return NextResponse.json(kanjiData, { status: 200 });
     } catch (error) {
         console.error(error);
