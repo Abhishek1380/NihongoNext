@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import FlashCard, { Kanji } from "@/components/FlashCard";
+import Navbar from "@/components/Navbar";
+import FlashCard, { Kanji } from "@/components/FlashCards/FlashCard";
 
 export default function Home() {
   const [kanjiData, setKanjiData] = useState<Kanji[]>([]);
@@ -25,6 +26,26 @@ export default function Home() {
   return (
     <main className="p-6 max-w-7xl mx-auto">
       <h1 className="text-3xl font-bold mb-6 text-center">Kanji Flashcards</h1>
+
+      <div className="flex justify-center gap-4 mb-6">
+        {["N1", "N2", "N3", "N4", "N5"].map((level) => (
+          <button
+            key={level}
+            onClick={() => {
+              fetch(`/api/kanji?level=${level}`)
+                .then((res) => res.json())
+                .then((data: Kanji[]) => {
+                  setKanjiData(data);
+                  setPage(0); // reset to first page
+                });
+            }}
+            className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+          >
+            {level}
+          </button>
+        ))}
+      </div>
+
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 justify-center">
         {currentCards.map((k) => (
