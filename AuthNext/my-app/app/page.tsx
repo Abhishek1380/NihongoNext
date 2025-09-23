@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import FlashCard, { Kanji } from "@/components/FlashCards/FlashCard";
+import RomajiTyping from "@/components/features/RomajiTyping/RomajiTyping";
 
 export default function Home() {
   const [kanjiData, setKanjiData] = useState<Kanji[]>([]);
@@ -25,6 +26,8 @@ export default function Home() {
 
   return (
     <main className="p-6 max-w-7xl mx-auto">
+      <RomajiTyping />
+
       <h1 className="text-3xl font-bold mb-6 text-center">Kanji Flashcards</h1>
 
       <div className="flex justify-center gap-4 mb-6">
@@ -36,7 +39,7 @@ export default function Home() {
                 .then((res) => res.json())
                 .then((data: Kanji[]) => {
                   setKanjiData(data);
-                  setPage(0); // reset to first page
+                  setPage(0);
                 });
             }}
             className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"

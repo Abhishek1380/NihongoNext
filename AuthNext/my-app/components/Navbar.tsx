@@ -3,13 +3,11 @@
 import Link from "next/link";
 import { FC } from "react";
 
-// Define a type for nav links
 interface NavLink {
     label: string;
     href: string;
 }
 
-// Props type (in case you want to pass links dynamically later)
 interface NavbarProps {
     brand?: string;
     links?: NavLink[];
@@ -24,17 +22,22 @@ const Navbar: FC<NavbarProps> = ({
         { label: "Contact", href: "/contact" },
     ],
 }) => {
+    const authLinks: NavLink[] = [
+        { label: "Login", href: "/auth/login" },
+        { label: "Signup", href: "/signup" },
+    ];
+
+    const allLinks = [...links, ...authLinks];
+
     return (
         <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
             <div className="container mx-auto flex items-center justify-between px-6 py-4">
-                {/* Brand */}
                 <Link href="/" className="text-2xl font-bold text-gray-800">
                     {brand}
                 </Link>
 
-                {/* Links */}
                 <div className="flex gap-6">
-                    {links.map(({ label, href }) => (
+                    {allLinks.map(({ label, href }) => (
                         <Link
                             key={href}
                             href={href}
