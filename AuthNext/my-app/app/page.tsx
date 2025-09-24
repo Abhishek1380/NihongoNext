@@ -12,9 +12,11 @@ export default function Home() {
 
   useEffect(() => {
     fetch("/api/kanji")
-      .then((res) => res.json())
-      .then((data: Kanji[]) => setKanjiData(data))
-      .catch((err) => console.error(err));
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setKanjiData(data);
+      });
   }, []);
 
   if (kanjiData.length === 0) return <div>Loading...</div>;

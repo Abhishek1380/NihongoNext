@@ -29,6 +29,7 @@ import Kanji from "../../../models/Kanji";
 export async function GET(req: Request) {
     try {
         await connectDB();
+        console.log("Connected to database");
 
         const { searchParams } = new URL(req.url);
         const level = searchParams.get("level"); // e.g. "N4"
