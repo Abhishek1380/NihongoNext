@@ -24,7 +24,7 @@ export default function Home() {
   const totalPages = Math.ceil(kanjiData.length / cardsPerPage);
   const start = page * cardsPerPage;
   const end = start + cardsPerPage;
-  const currentCards = kanjiData.slice(start, end);
+  const currentCards = Array.isArray(kanjiData) ? kanjiData.slice(start, end) : [];
 
   return (
     <main className="p-6 max-w-7xl mx-auto">
