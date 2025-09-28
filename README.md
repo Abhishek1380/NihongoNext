@@ -69,7 +69,7 @@ Visit [http://localhost:3000](http://localhost:3000) to view the website.
 - [ ] Contact / Newsletter form
 - [ ] Footer with social links
 - [ ] Responsive design (mobile-first)
-- [ ] Deployment via Vercel
+- [ ] Deployment via Vercell
 
 ---
 
