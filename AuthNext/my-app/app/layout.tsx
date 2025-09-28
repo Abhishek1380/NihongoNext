@@ -1,3 +1,4 @@
+import LanguageParagraph from "@/components/features/LanguageParagraph/LanguageParagraph";
 import "./globals.css";
 import Navbar from '@/components/Navbar';
 import type { Metadata } from "next";
@@ -15,7 +16,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
+        {/* <Navbar /> */}
+        {/* <LanguageParagraph /> */}
         {children}
       </body>
     </html>

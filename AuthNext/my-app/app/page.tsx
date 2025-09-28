@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import FlashCard, { Kanji } from "@/components/FlashCards/FlashCard";
 import RomajiTyping from "@/components/features/RomajiTyping/RomajiTyping";
+import LanguageParagraph from "@/components/features/LanguageParagraph/LanguageParagraph";
+import AdminParagraph from "@/components/features/LanguageParagraph/AdminParagraph";
 
 export default function Home() {
   const [kanjiData, setKanjiData] = useState<Kanji[]>([]);
@@ -28,6 +30,8 @@ export default function Home() {
 
   return (
     <main className="p-6 max-w-7xl mx-auto">
+      <AdminParagraph />
+      <LanguageParagraph />
       <RomajiTyping />
 
       <h1 className="text-3xl font-bold mb-6 text-center">Kanji Flashcards</h1>
