@@ -30,11 +30,12 @@ export default function Home() {
 
   return (
     <main className="p-6 max-w-7xl mx-auto">
-      <AdminParagraph />
+      <Navbar />
+      {/* <AdminParagraph />
       <LanguageParagraph />
-      <RomajiTyping />
+      <RomajiTyping /> */}
 
-      <h1 className="text-3xl font-bold mb-6 text-center">Kanji Flashcards</h1>
+      {/* <h1 className="text-3xl font-bold mb-6 text-center">Kanji Flashcards</h1>
 
       <div className="flex justify-center gap-4 mb-6">
         {["N1", "N2", "N3", "N4", "N5"].map((level) => (
@@ -81,7 +82,7 @@ export default function Home() {
 
       <div className="text-center mt-2">
         Page {page + 1} of {totalPages}
-      </div>
+      </div> */}
     </main>
   );
 }
