@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <main className="p-6 max-w-7xl mx-auto">
-      <Navbar />
+      {/* <Navbar /> */}
       {/* <AdminParagraph />
       <LanguageParagraph />
       <RomajiTyping /> */}

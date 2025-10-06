@@ -1,4 +1,3 @@
-// app/api/paragraphs/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
 import mongoose from "mongoose";
@@ -25,7 +24,7 @@ export const GET = async (req: NextRequest) => {
     }
 };
 
-// app/api/paragraphs/route.ts (POST)
+
 export const POST = async (req: NextRequest) => {
     try {
         await connectDB();
@@ -43,7 +42,6 @@ export const POST = async (req: NextRequest) => {
 
         await newParagraph.save();
 
-        // ✅ Make sure to return JSON
         return NextResponse.json({
             message: "Paragraph added successfully",
             paragraph: newParagraph,
