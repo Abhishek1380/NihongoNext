@@ -21,13 +21,18 @@ export default function LoginForm() {
             });
 
             const data = await res.json();
+            console.log("Login response:", data);
 
-            if (res.ok) {
+            if (res.ok && data.token) {
+
                 localStorage.setItem("token", data.token);
+                console.log("Token saved:", data.token);
+
                 alert(data.message);
+
                 router.push("/dashboard");
             } else {
-                alert(data.message);
+                alert(data.message || "Login failed");
             }
         } catch (err) {
             console.error(err);

@@ -23,7 +23,7 @@ const Navbar: FC<NavbarProps> = ({
     ],
 }) => {
     const authLinks: NavLink[] = [
-        { label: "Login", href: "/auth/login" },
+        { label: "Login", href: "/login" },
         { label: "Signup", href: "/signup" },
     ];
 
