@@ -1,5 +1,8 @@
 "use client"
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import Link from "next/link";
+
 
 interface Paragraph {
     _id: string;
@@ -13,6 +16,7 @@ interface Paragraph {
 }
 
 export default function LanguageParagraph() {
+    const router = useRouter();
     const [paragraphs, setParagraphs] = useState<Paragraph[]>([]);
 
     useEffect(() => {
@@ -32,15 +36,17 @@ export default function LanguageParagraph() {
                         {para.japanese_paragraph}
                     </p>
                     <div className="flex justify-end">
-                        <button
-                            onClick={() => console.log("Read Paragraph clicked")}
-                            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200"
-                        >
-                            Read Paragraph
-                        </button>
+                        <Link href={`/paragraph/${para._id}`}>
+                            <button
+                                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200"
+                            >
+                                Read Paragraph
+                            </button>
+                        </Link>
                     </div>
                 </div>
-            ))}
-        </div>
+            ))
+            }
+        </div >
     );
 }

@@ -34,6 +34,7 @@ export default function Home() {
       {/* <AdminParagraph />
       <LanguageParagraph />
       <RomajiTyping /> */}
+      <LanguageParagraph />
 
       {/* <h1 className="text-3xl font-bold mb-6 text-center">Kanji Flashcards</h1>
 
