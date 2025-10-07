@@ -16,12 +16,11 @@ interface Paragraph {
 
 export default function ParagraphReader() {
     const params = useParams();
-    const paragraphId = params?.id; // coming from URL
+    const paragraphId = params?.id;
     const [paragraph, setParagraph] = useState<Paragraph | null>(null);
-    const [timeLeft, setTimeLeft] = useState<number>(30); // default 30 sec
+    const [timeLeft, setTimeLeft] = useState<number>(30);
     const [isTimeOver, setIsTimeOver] = useState(false);
 
-    // Fetch paragraph by ID
     useEffect(() => {
         if (!paragraphId) return;
 
@@ -31,7 +30,6 @@ export default function ParagraphReader() {
                 const data = await res.json();
                 setParagraph(data);
 
-                // Optional: set time based on paragraph length
                 if (data.length === "short") setTimeLeft(20);
                 else if (data.length === "medium") setTimeLeft(40);
                 else if (data.length === "long") setTimeLeft(60);
@@ -43,7 +41,6 @@ export default function ParagraphReader() {
         fetchParagraph();
     }, [paragraphId]);
 
-    // Timer countdown
     useEffect(() => {
         if (timeLeft <= 0) {
             setIsTimeOver(true);
@@ -60,7 +57,6 @@ export default function ParagraphReader() {
     const handleMarkAsRead = () => {
         console.log("Marked as read:", paragraph?._id);
         alert("Paragraph marked as read ✅");
-        // Here you can send POST request to update user tracker
     };
 
     return (
