@@ -12,7 +12,7 @@ This is a modern, responsive **startup landing page** built with [Next.js](https
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **Tooling**: ESLint, Prettier
-- **Deployment**: (Coming soon – likely [Vercel](https://vercel.com/))
+- **Deployment**: ([Vercel](https://vercel.com/))
 
 ---
 
