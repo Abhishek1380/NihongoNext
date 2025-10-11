@@ -8,7 +8,7 @@ interface Paragraph {
     japanese_paragraph: string;
     romaji_paragraph: string;
     english_paragraph: string;
-    length?: string;
+    length?: "short" | "medium" | "long";
     level?: string;
     date?: string;
     img?: string;
@@ -20,6 +20,7 @@ export default function ParagraphReader() {
     const [paragraph, setParagraph] = useState<Paragraph | null>(null);
     const [timeLeft, setTimeLeft] = useState<number>(30);
     const [isTimeOver, setIsTimeOver] = useState(false);
+    const [isMarked, setIsMarked] = useState(false);
 
     useEffect(() => {
         if (!paragraphId) return;
@@ -44,6 +45,7 @@ export default function ParagraphReader() {
     useEffect(() => {
         if (timeLeft <= 0) {
             setIsTimeOver(true);
+            handleMarkAsRead();
             return;
         }
 
@@ -54,9 +56,34 @@ export default function ParagraphReader() {
         return () => clearInterval(timer);
     }, [timeLeft]);
 
-    const handleMarkAsRead = () => {
-        console.log("Marked as read:", paragraph?._id);
-        alert("Paragraph marked as read ✅");
+    const handleMarkAsRead = async () => {
+        if (!paragraph?._id || isMarked) return;
+
+        try {
+            const token = localStorage.getItem("token");
+            if (!token) return alert("Not logged in");
+
+            const res = await fetch("/api/consistency", {
+                headers: { "Authorization": `Bearer ${token}` },
+            });
+            const data = await res.json();
+            const currentCount = data.paragraphsRead ?? 0;
+
+            await fetch("/api/consistency", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
+                body: JSON.stringify({ paragraphsRead: currentCount + 1 }),
+            });
+
+            alert("Paragraph marked as read");
+            setIsMarked(true);
+        } catch (err) {
+            console.error(err);
+            alert("Failed to mark as read");
+        }
     };
 
     return (
@@ -74,8 +101,9 @@ export default function ParagraphReader() {
 
             <div className="flex justify-end">
                 <button
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={!isTimeOver}
+                    className={`bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-medium transition-all duration-200 
+            ${!isTimeOver || isMarked ? "opacity-50 cursor-not-allowed" : ""}`}
+                    disabled={!isTimeOver || isMarked}
                     onClick={handleMarkAsRead}
                 >
                     Mark as Read
