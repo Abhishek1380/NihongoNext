@@ -1,4 +1,4 @@
-# 🚀 Japanese learning Website
+# Languge learning Website (Primarily Japanese)
 
 This is a modern, responsive **startup landing page** built with [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/), and [Tailwind CSS](https://tailwindcss.com/). Designed to be fast, scalable, and easy to extend as your product evolves.
 
