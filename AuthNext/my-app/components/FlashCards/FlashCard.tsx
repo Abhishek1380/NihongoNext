@@ -16,6 +16,10 @@ interface FlashCardProps {
   kanji: Kanji;
 }
 
+
+
+
+
 export default function FlashCard({ kanji }: FlashCardProps) {
   const [flipped, setFlipped] = useState(false);
 
