@@ -6,7 +6,7 @@ This is a modern, responsive **startup landing page** built with [Next.js](https
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 - **Framework**: Next.js (App Router)
 - **Language**: TypeScript
@@ -16,7 +16,7 @@ This is a modern, responsive **startup landing page** built with [Next.js](https
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
 
 ```
 startup-website/
